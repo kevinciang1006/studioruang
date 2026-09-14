@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ConsultationForm from "../components/react/ConsultationForm.tsx";
+---
+
+<BaseLayout
+  title="Contact — Studio Ruang"
+  description="Book a consultation with Studio Ruang, a residential interior design studio in Singapore."
+  canonicalPath="/contact"
+>
+  <section class="mx-auto max-w-[1200px] px-6 py-20 lg:px-9">
+    <h1 class="font-display text-5xl font-light text-ink">Book a consultation</h1>
+    <p class="mt-4 max-w-xl text-muted">
+      Tell us about your home and where you are in the process. We reply personally within two
+      working days.
+    </p>
+
+    <div class="mt-16 grid gap-16 lg:grid-cols-[1fr_360px]">
+      <ConsultationForm client:visible />
+
+      <aside class="flex flex-col gap-8 border-t border-border pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs font-medium uppercase tracking-widest text-muted">Email</h2>
+          <a href="mailto:hello@studioruang.sg" class="text-ink">hello@studioruang.sg</a>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs font-medium uppercase tracking-widest text-muted">Phone</h2>
+          <a href="tel:+6562204418" class="text-ink">+65 6220 4418</a>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs font-medium uppercase tracking-widest text-muted">Studio</h2>
+          <p class="text-ink">18 Kandahar Street #02-03<br />Singapore 198885</p>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs font-medium uppercase tracking-widest text-muted">Hours</h2>
+          <p class="text-ink">Monday – Friday, 10am – 6pm<br />Saturday by appointment</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

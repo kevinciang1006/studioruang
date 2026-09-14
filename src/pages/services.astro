@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const steps = [
+  {
+    number: "01",
+    title: "Consultation",
+    description:
+      "We visit the space in person, listen to how you actually want to live in it, and set a budget that's honest from day one — not a number designed to win the pitch.",
+  },
+  {
+    number: "02",
+    title: "Concept & Moodboard",
+    description:
+      "A single coherent direction — plan, materials, references — rather than a menu of options to choose between. We'd rather convince you of one good idea than hedge with three.",
+  },
+  {
+    number: "03",
+    title: "Design Development",
+    description:
+      "Joinery, lighting, and finishes resolved down to the detail, with physical samples in hand before anything is ordered.",
+  },
+  {
+    number: "04",
+    title: "Build & Project Management",
+    description:
+      "Drawings issued, contractors tendered, and costs agreed before work starts. We're on site weekly for the length of the build.",
+  },
+  {
+    number: "05",
+    title: "Styling & Handover",
+    description:
+      "Furniture, art, and final styling, then a walkthrough of the finished home before we hand you the keys.",
+  },
+];
+
+const offerings = [
+  {
+    title: "Full residential design",
+    description: "End-to-end design for a whole home, from first sketch to the last chair placed.",
+  },
+  {
+    title: "Renovation",
+    description:
+      "Structural and interior renovation for apartments and landed homes, including conservation properties.",
+  },
+  {
+    title: "Styling & FF&E",
+    description:
+      "Furniture, fittings and styling for homes that don't need structural work — just a considered finish.",
+  },
+  {
+    title: "Commercial fit-out",
+    description:
+      "A small number of F&B and hospitality fit-outs each year, for operators who want a considered room.",
+  },
+];
+---
+
+<BaseLayout
+  title="Services & Process — Studio Ruang"
+  description="How Studio Ruang works, from first consultation to handover, and the services we offer."
+  canonicalPath="/services"
+>
+  <section class="mx-auto max-w-[1200px] px-6 py-20 lg:px-9">
+    <h1 class="font-display text-5xl font-light text-ink">How we work</h1>
+    <p class="mt-4 max-w-xl text-muted">
+      Typically 9–14 months from first meeting to handover, across five stages.
+    </p>
+
+    <ol class="mt-16 flex flex-col">
+      {steps.map((step) => (
+        <li class="reveal grid gap-4 border-t border-border py-9 md:grid-cols-[80px_260px_1fr] md:items-baseline">
+          <span class="font-mono text-xs text-clay">{step.number}</span>
+          <h2 class="font-display text-2xl text-ink">{step.title}</h2>
+          <p class="max-w-2xl text-muted">{step.description}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="reveal bg-surface px-6 py-24 lg:px-9">
+    <div class="mx-auto max-w-[1200px]">
+      <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-muted">What we offer</h2>
+      <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {offerings.map((offering) => (
+          <div class="flex flex-col gap-3 rounded-sm border border-border bg-bone p-7">
+            <h3 class="font-display text-xl text-ink">{offering.title}</h3>
+            <p class="text-sm text-muted">{offering.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-ink px-6 py-20 text-center lg:px-9">
+    <div class="mx-auto flex max-w-xl flex-col items-center gap-6">
+      <h2 class="font-display text-4xl font-light text-bone">Ready to talk about your home?</h2>
+      <a
+        href="/contact"
+        class="rounded-sm bg-clay px-7 py-4 text-xs font-medium uppercase tracking-widest text-bone"
+      >
+        Book a consultation
+      </a>
+    </div>
+  </section>
+</BaseLayout>
