@@ -1,0 +1,73 @@
+---
+const navLinks = [
+  { href: "/projects", label: "Projects" },
+  { href: "/about", label: "Studio" },
+  { href: "/services", label: "Process" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<header
+  data-header
+  class="sticky top-0 z-40 border-b border-border bg-bone/95 backdrop-blur transition-[padding] duration-300"
+>
+  <div class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-6 lg:px-9" data-header-inner>
+    <a href="/" class="font-display text-lg uppercase tracking-[0.14em] text-ink">Studio Ruang</a>
+
+    <nav class="hidden items-center gap-9 md:flex" aria-label="Primary">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-sm text-ink hover:text-clay">{link.label}</a>
+      ))}
+      <a
+        href="/contact"
+        class="rounded-sm bg-clay px-6 py-3 text-xs font-medium uppercase tracking-widest text-bone hover:bg-ink"
+      >
+        Book a consultation
+      </a>
+    </nav>
+
+    <button
+      type="button"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
+    >
+      <span class="sr-only">Open menu</span>
+      <span class="block h-px w-6 bg-ink"></span>
+      <span class="block h-px w-6 bg-ink"></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" data-mobile-menu hidden class="border-t border-border bg-ink px-6 py-10 md:hidden">
+    <nav class="flex flex-col gap-2" aria-label="Mobile primary">
+      {navLinks.map((link) => (
+        <a href={link.href} class="py-3 font-display text-3xl font-light text-bone">{link.label}</a>
+      ))}
+    </nav>
+    <a
+      href="/contact"
+      class="mt-8 flex h-12 items-center justify-center rounded-sm bg-clay text-xs font-medium uppercase tracking-widest text-bone"
+    >
+      Book a consultation
+    </a>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+  const header = document.querySelector<HTMLElement>("[data-header]");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+    if (menu) menu.hidden = isOpen;
+  });
+
+  window.addEventListener("scroll", () => {
+    if (!header) return;
+    const scrolled = window.scrollY > 24;
+    header.classList.toggle("py-0", scrolled);
+  });
+</script>

@@ -1,0 +1,36 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-bone">
+  <div class="mx-auto grid max-w-[1200px] gap-12 px-6 py-16 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:px-9">
+    <div class="flex flex-col gap-3">
+      <span class="font-display text-lg uppercase tracking-[0.14em] text-ink">Studio Ruang</span>
+      <p class="max-w-[280px] text-sm leading-relaxed text-muted">
+        Interior design for homes in Singapore and the region.
+      </p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <span class="text-xs font-medium uppercase tracking-widest text-muted">Navigate</span>
+      <a href="/projects" class="text-sm text-ink">Projects</a>
+      <a href="/about" class="text-sm text-ink">Studio</a>
+      <a href="/services" class="text-sm text-ink">Process</a>
+      <a href="/contact" class="text-sm text-ink">Contact</a>
+    </div>
+    <div class="flex flex-col gap-3">
+      <span class="text-xs font-medium uppercase tracking-widest text-muted">Contact</span>
+      <a href="mailto:hello@studioruang.sg" class="text-sm text-ink">hello@studioruang.sg</a>
+      <a href="tel:+6562204418" class="text-sm text-ink">+65 6220 4418</a>
+      <span class="text-sm text-muted">18 Kandahar Street #02-03<br />Singapore 198885</span>
+    </div>
+    <div class="flex flex-col gap-3">
+      <span class="text-xs font-medium uppercase tracking-widest text-muted">Follow</span>
+      <a href="https://instagram.com" class="text-sm text-ink">Instagram</a>
+      <a href="https://pinterest.com" class="text-sm text-ink">Pinterest</a>
+    </div>
+  </div>
+  <div class="mx-auto flex max-w-[1200px] justify-between border-t border-border px-6 py-6 text-xs text-muted lg:px-9">
+    <span>© {year} Studio Ruang Pte Ltd</span>
+    <span>Privacy · Terms</span>
+  </div>
+</footer>
