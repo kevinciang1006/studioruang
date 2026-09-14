@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Lightbox from "../../components/react/Lightbox.tsx";
+import { projects, type Project } from "../../data/projects";
+import { getAdjacentProject } from "../../lib/projects-nav";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const next = getAdjacentProject(project.slug);
+---
+
+<BaseLayout
+  title={`${project.name} — Studio Ruang`}
+  description={project.narrative[0]}
+  canonicalPath={`/projects/${project.slug}`}
+  ogImage={project.coverImage}
+>
+  <section class="relative flex h-[70vh] min-h-[520px] items-end overflow-hidden">
+    <img
+      src={project.coverImage}
+      alt={project.coverImageAlt}
+      class="absolute inset-0 h-full w-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+      width="1920"
+      height="1080"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/25 to-ink/60"></div>
+    <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6 pb-16 lg:px-9">
+      <p class="text-xs font-medium uppercase tracking-[0.2em] text-surface">
+        {project.category} project
+      </p>
+      <h1 class="mt-4 font-display text-6xl font-light text-bone md:text-7xl">{project.name}</h1>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1200px] px-6 lg:px-9">
+    <dl class="grid grid-cols-2 gap-8 border-b border-border py-9 md:grid-cols-4">
+      <div class="flex flex-col gap-2">
+        <dt class="text-xs font-medium uppercase tracking-widest text-muted">Category</dt>
+        <dd class="text-ink">{project.category}</dd>
+      </div>
+      <div class="flex flex-col gap-2">
+        <dt class="text-xs font-medium uppercase tracking-widest text-muted">Year</dt>
+        <dd class="text-ink">{project.year}</dd>
+      </div>
+      <div class="flex flex-col gap-2">
+        <dt class="text-xs font-medium uppercase tracking-widest text-muted">Location</dt>
+        <dd class="text-ink">{project.location}</dd>
+      </div>
+      <div class="flex flex-col gap-2">
+        <dt class="text-xs font-medium uppercase tracking-widest text-muted">Scope</dt>
+        <dd class="text-ink">{project.scope}</dd>
+      </div>
+    </dl>
+
+    <div class="grid gap-10 py-20 lg:grid-cols-[minmax(0,340px)_1fr]">
+      <p class="font-display text-2xl leading-snug text-ink">{project.narrative[0]}</p>
+      <div class="flex max-w-2xl flex-col gap-6 text-muted">
+        {project.narrative.slice(1).map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1200px] px-6 pb-20 lg:px-9">
+    <Lightbox client:visible images={project.gallery} />
+  </section>
+
+  <nav class="border-t border-border" aria-label="Project navigation">
+    <div class="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-4 px-6 py-10 text-xs uppercase tracking-widest text-muted sm:flex-row lg:px-9">
+      <a href="/projects" class="text-clay">All projects</a>
+      <a href={`/projects/${next.slug}`}>{next.name} →</a>
+    </div>
+  </nav>
+</BaseLayout>

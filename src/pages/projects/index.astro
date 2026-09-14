@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectFilter from "../../components/react/ProjectFilter.tsx";
+import { projects } from "../../data/projects";
+---
+
+<BaseLayout
+  title="Projects — Studio Ruang"
+  description="Residential and commercial interiors by Studio Ruang, Singapore — browse by category."
+  canonicalPath="/projects"
+>
+  <section class="mx-auto max-w-[1200px] px-6 py-20 lg:px-9">
+    <h1 class="font-display text-5xl font-light text-ink">Projects</h1>
+    <p class="mt-4 max-w-xl text-muted">
+      Six homes and one café, each designed around how the people in it actually live.
+    </p>
+    <div class="mt-12">
+      <ProjectFilter client:visible projects={projects} />
+    </div>
+  </section>
+</BaseLayout>
