@@ -30,20 +30,20 @@ const press = ["Home & Decor", "Tatler Homes", "Cubes"];
     <div class="mt-10 grid gap-16 lg:grid-cols-2">
       <div class="flex flex-col gap-6 text-muted">
         <p>
-          Studio Ruang was founded in Singapore in 2016. "Ruang" means space in Malay and
-          Indonesian — the word we kept coming back to when we tried to describe what we actually
-          do, which is give a room back to the people living in it.
+          Studio Ruang was founded in Singapore in 2016. "Ruang" means space in Malay and Indonesian
+          — the word we kept coming back to when we tried to describe what we actually do, which is
+          give a room back to the people living in it.
         </p>
         <p>
           We're a small, six-person practice, residential-first, with a short list of commercial
-          fit-outs each year for operators we believe in. We take on a limited number of homes at
-          a time so that each one gets the attention it needs from the first sketch to the last
-          chair placed.
+          fit-outs each year for operators we believe in. We take on a limited number of homes at a
+          time so that each one gets the attention it needs from the first sketch to the last chair
+          placed.
         </p>
         <p>
-          Our approach comes back to three things, in this order: light, materiality, and
-          restraint. We'd rather leave a room slightly underfurnished than crowd it with things
-          that don't need to be there.
+          Our approach comes back to three things, in this order: light, materiality, and restraint.
+          We'd rather leave a room slightly underfurnished than crowd it with things that don't need
+          to be there.
         </p>
       </div>
       <img
@@ -61,12 +61,14 @@ const press = ["Home & Decor", "Tatler Homes", "Cubes"];
     <div class="mx-auto max-w-[1200px]">
       <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-muted">What we believe</h2>
       <div class="mt-10 grid gap-8 md:grid-cols-3">
-        {values.map((value) => (
-          <div class="flex flex-col gap-3">
-            <h3 class="font-display text-2xl text-ink">{value.title}</h3>
-            <p class="text-sm text-muted">{value.description}</p>
-          </div>
-        ))}
+        {
+          values.map((value) => (
+            <div class="flex flex-col gap-3">
+              <h3 class="font-display text-2xl text-ink">{value.title}</h3>
+              <p class="text-sm text-muted">{value.description}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -74,9 +76,7 @@ const press = ["Home & Decor", "Tatler Homes", "Cubes"];
   <section class="mx-auto max-w-[1200px] px-6 py-20 text-center lg:px-9">
     <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted">As featured in</p>
     <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
-      {press.map((name) => (
-        <span class="font-display text-xl text-muted">{name}</span>
-      ))}
+      {press.map((name) => <span class="font-display text-xl text-muted">{name}</span>)}
     </div>
   </section>
 </BaseLayout>

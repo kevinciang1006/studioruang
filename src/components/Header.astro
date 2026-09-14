@@ -11,13 +11,20 @@ const navLinks = [
   data-header
   class="sticky top-0 z-40 border-b border-border bg-bone/95 backdrop-blur transition-[padding] duration-300"
 >
-  <div class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-6 lg:px-9" data-header-inner>
+  <div
+    class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-6 lg:px-9"
+    data-header-inner
+  >
     <a href="/" class="font-display text-lg uppercase tracking-[0.14em] text-ink">Studio Ruang</a>
 
     <nav class="hidden items-center gap-9 md:flex" aria-label="Primary">
-      {navLinks.map((link) => (
-        <a href={link.href} class="text-sm text-ink hover:text-clay">{link.label}</a>
-      ))}
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="text-sm text-ink hover:text-clay">
+            {link.label}
+          </a>
+        ))
+      }
       <a
         href="/contact"
         class="rounded-sm bg-clay px-6 py-3 text-xs font-medium uppercase tracking-widest text-bone hover:bg-ink"
@@ -39,11 +46,20 @@ const navLinks = [
     </button>
   </div>
 
-  <div id="mobile-menu" data-mobile-menu hidden class="border-t border-border bg-ink px-6 py-10 md:hidden">
+  <div
+    id="mobile-menu"
+    data-mobile-menu
+    hidden
+    class="border-t border-border bg-ink px-6 py-10 md:hidden"
+  >
     <nav class="flex flex-col gap-2" aria-label="Mobile primary">
-      {navLinks.map((link) => (
-        <a href={link.href} class="py-3 font-display text-3xl font-light text-bone">{link.label}</a>
-      ))}
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="py-3 font-display text-3xl font-light text-bone">
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
     <a
       href="/contact"

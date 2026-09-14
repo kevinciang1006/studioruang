@@ -5,3 +5,6 @@ dist/
 .env
 .DS_Store
 coverage/
+
+# Redundant with the extracted 'Studio Ruang homepage direction/' folder, which is tracked.
+Studio Ruang homepage direction.zip

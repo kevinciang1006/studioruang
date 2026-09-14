@@ -18,7 +18,12 @@ const { title, description, canonicalPath, ogImage } = Astro.props;
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} canonicalPath={canonicalPath} ogImage={ogImage} />
+    <BaseHead
+      title={title}
+      description={description}
+      canonicalPath={canonicalPath}
+      ogImage={ogImage}
+    />
   </head>
   <body class="bg-bone font-sans text-ink">
     <a href="#main-content" class="skip-link">Skip to content</a>

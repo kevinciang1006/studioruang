@@ -69,13 +69,15 @@ const offerings = [
     </p>
 
     <ol class="mt-16 flex flex-col">
-      {steps.map((step) => (
-        <li class="reveal grid gap-4 border-t border-border py-9 md:grid-cols-[80px_260px_1fr] md:items-baseline">
-          <span class="font-mono text-xs text-clay">{step.number}</span>
-          <h2 class="font-display text-2xl text-ink">{step.title}</h2>
-          <p class="max-w-2xl text-muted">{step.description}</p>
-        </li>
-      ))}
+      {
+        steps.map((step) => (
+          <li class="reveal grid gap-4 border-t border-border py-9 md:grid-cols-[80px_260px_1fr] md:items-baseline">
+            <span class="font-mono text-xs text-clay">{step.number}</span>
+            <h2 class="font-display text-2xl text-ink">{step.title}</h2>
+            <p class="max-w-2xl text-muted">{step.description}</p>
+          </li>
+        ))
+      }
     </ol>
   </section>
 
@@ -83,12 +85,14 @@ const offerings = [
     <div class="mx-auto max-w-[1200px]">
       <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-muted">What we offer</h2>
       <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {offerings.map((offering) => (
-          <div class="flex flex-col gap-3 rounded-sm border border-border bg-bone p-7">
-            <h3 class="font-display text-xl text-ink">{offering.title}</h3>
-            <p class="text-sm text-muted">{offering.description}</p>
-          </div>
-        ))}
+        {
+          offerings.map((offering) => (
+            <div class="flex flex-col gap-3 rounded-sm border border-border bg-bone p-7">
+              <h3 class="font-display text-xl text-ink">{offering.title}</h3>
+              <p class="text-sm text-muted">{offering.description}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
