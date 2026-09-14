@@ -1,0 +1,27 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+  eager?: boolean;
+}
+
+const { project, eager = false } = Astro.props;
+---
+
+<a href={`/projects/${project.slug}`} class="group reveal block">
+  <div class="overflow-hidden rounded-sm bg-surface">
+    <img
+      src={project.coverImage}
+      alt={project.coverImageAlt}
+      width={800}
+      height={600}
+      loading={eager ? "eager" : "lazy"}
+      class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+    />
+  </div>
+  <h3 class="mt-5 font-display text-2xl text-ink">{project.name}</h3>
+  <p class="mt-1 text-xs uppercase tracking-widest text-muted">
+    {project.category} · {project.year}
+  </p>
+</a>
