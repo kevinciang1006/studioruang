@@ -28,8 +28,12 @@ export const consultationSchema = z.object({
     errorMap: () => ({ message: "Select a timeline." }),
   }),
   message: z.string().trim().min(20, "Tell us a little more (20 characters minimum).").max(2000),
-  // Honeypot: must stay empty. Bots that autofill every field will trip this.
-  company: z.string().max(0, "Leave this field empty.").optional().default(""),
+  // Honeypot: humans never see or fill this field (see ConsultationForm.tsx). It stays
+  // permissive here — a filled value is still a *valid* submission as far as the schema
+  // is concerned — because the honeypot check happens after parsing, in the API route
+  // (src/pages/api/consultation.ts), which needs `parsed.data.company` to inspect it
+  // rather than have zod reject the request before that check ever runs.
+  company: z.string().max(200).optional().default(""),
 });
 
 export type ConsultationInput = z.infer<typeof consultationSchema>;

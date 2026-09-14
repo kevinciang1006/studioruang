@@ -38,8 +38,8 @@ describe("consultationSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects a non-empty honeypot field", () => {
+  it("still parses successfully when the honeypot field is filled (the API route, not the schema, rejects those)", () => {
     const result = consultationSchema.safeParse({ ...validPayload, company: "Acme Bots" });
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
   });
 });
