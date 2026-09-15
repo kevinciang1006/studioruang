@@ -44,7 +44,9 @@ export async function POST({ request, clientAddress }: APIContext): Promise<Resp
   }
 
   if (parsed.data.company) {
-    // Honeypot tripped: pretend success so automated fillers don't learn to adapt.
+    // Honeypot tripped: pretend success so automated fillers don't learn to adapt. Logged
+    // (not surfaced to the client) so a real incident isn't confused with a bot bounce.
+    console.info("[api/consultation] Honeypot tripped, no row inserted.");
     return jsonResponse(200, { ok: true });
   }
 
@@ -64,6 +66,7 @@ export async function POST({ request, clientAddress }: APIContext): Promise<Resp
     });
 
     if (error) {
+      console.error("[api/consultation] Supabase insert error:", error);
       return jsonResponse(502, {
         ok: false,
         error: "We could not save your enquiry. Please try again.",
@@ -71,7 +74,8 @@ export async function POST({ request, clientAddress }: APIContext): Promise<Resp
     }
 
     return jsonResponse(200, { ok: true });
-  } catch {
+  } catch (err) {
+    console.error("[api/consultation] Unexpected error:", err);
     return jsonResponse(500, { ok: false, error: "Something went wrong. Please try again." });
   }
 }
