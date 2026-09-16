@@ -9,7 +9,7 @@ const validPayload = {
   budgetRange: "250k-500k",
   timeline: "6-12-months",
   message: "We're renovating a 4-room flat in Bukit Timah and would like a full consultation.",
-  company: "",
+  website_url: "",
 };
 
 describe("consultationSchema", () => {
@@ -39,7 +39,7 @@ describe("consultationSchema", () => {
   });
 
   it("still parses successfully when the honeypot field is filled (the API route, not the schema, rejects those)", () => {
-    const result = consultationSchema.safeParse({ ...validPayload, company: "Acme Bots" });
+    const result = consultationSchema.safeParse({ ...validPayload, website_url: "Acme Bots" });
     expect(result.success).toBe(true);
   });
 });

@@ -44,7 +44,7 @@ export async function POST({ request, clientAddress }: APIContext): Promise<Resp
     return jsonResponse(400, { ok: false, error: "Please check the form and try again." });
   }
 
-  if (parsed.data.company) {
+  if (parsed.data.website_url) {
     // Honeypot tripped: pretend success so automated fillers don't learn to adapt. Logged
     // (not surfaced to the client) so a real incident isn't confused with a bot bounce.
     console.info("[api/consultation] Honeypot tripped, no row inserted.");

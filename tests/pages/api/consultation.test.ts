@@ -27,7 +27,7 @@ const validPayload = {
   budgetRange: "250k-500k",
   timeline: "6-12-months",
   message: "We are renovating a 4-room flat in Bukit Timah and would like a full consultation.",
-  company: "",
+  website_url: "",
 };
 
 describe("POST /api/consultation", () => {
@@ -65,7 +65,7 @@ describe("POST /api/consultation", () => {
   it("silently accepts (200) but never inserts when the honeypot is filled", async () => {
     const { POST } = await import("../../../src/pages/api/consultation");
     const response = await POST({
-      request: makeRequest({ ...validPayload, company: "Bot Co" }),
+      request: makeRequest({ ...validPayload, website_url: "Bot Co" }),
       clientAddress: "203.0.113.12",
     } as never);
 

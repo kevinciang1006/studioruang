@@ -27,7 +27,7 @@ export default function ConsultationForm() {
     formState: { errors },
   } = useForm<ConsultationInput>({
     resolver: zodResolver(consultationSchema),
-    defaultValues: { company: "" },
+    defaultValues: { website_url: "" },
   });
 
   async function onSubmit(data: ConsultationInput) {
@@ -59,10 +59,15 @@ export default function ConsultationForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-6">
-      {/* Honeypot: hidden from sighted and keyboard users, left for bots to fill in. */}
+      {/*
+        Honeypot: hidden from sighted and keyboard users, left for bots to fill in. Named
+        website_url (not "company") and labelled "Leave blank" — a field named/labelled
+        "company" gets silently autofilled by Chrome from a saved Address/Organization
+        profile regardless of autocomplete="off", which was tripping this for real users.
+      */}
       <div aria-hidden="true" className="absolute h-0 w-0 overflow-hidden opacity-0">
-        <Label htmlFor="company">Company</Label>
-        <input id="company" tabIndex={-1} autoComplete="off" {...register("company")} />
+        <Label htmlFor="website_url">Leave blank</Label>
+        <input id="website_url" tabIndex={-1} autoComplete="off" {...register("website_url")} />
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">

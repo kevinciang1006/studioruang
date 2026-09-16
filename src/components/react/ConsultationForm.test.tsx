@@ -35,7 +35,7 @@ describe("ConsultationForm", () => {
 
   it("has a visually hidden honeypot field that real users never see", () => {
     render(<ConsultationForm />);
-    const honeypot = screen.getByLabelText(/company/i, { selector: "input" });
+    const honeypot = screen.getByLabelText(/leave blank/i, { selector: "input" });
     expect(honeypot).toHaveAttribute("tabindex", "-1");
     expect(honeypot.closest("[aria-hidden]")).toBeTruthy();
   });
