@@ -23,6 +23,11 @@ consultation form, and the project-gallery lightbox.
   answer bots with a silent 200 rather than a 400 that would tip them off.
 - `@supabase/supabase-js`, server-only client (`src/lib/supabase.ts`), service-role key never
   imported into an island.
+- `resend`, server-only (`src/lib/email.ts`), called from `src/pages/api/consultation.ts` after
+  the Supabase insert succeeds. `sendEmails()` never throws — email is best-effort and must never
+  lose an enquiry or break the success UI. Sends a confirmation to the submitter and a
+  notification to `OWNER_EMAIL`, both from `Studio Ruang <hello@send.kevinciang.com>`. See
+  README.md for the `send.kevinciang.com` domain-verification steps.
 
 ## Conventions
 

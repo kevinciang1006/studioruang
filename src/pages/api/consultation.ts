@@ -3,6 +3,7 @@ export const prerender = false;
 import type { APIContext } from "astro";
 import { consultationSchema } from "../../lib/schemas";
 import { getSupabaseServerClient } from "../../lib/supabase";
+import { sendEmails } from "../../lib/email";
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
@@ -73,6 +74,7 @@ export async function POST({ request, clientAddress }: APIContext): Promise<Resp
       });
     }
 
+    await sendEmails(parsed.data);
     return jsonResponse(200, { ok: true });
   } catch (err) {
     console.error("[api/consultation] Unexpected error:", err);
