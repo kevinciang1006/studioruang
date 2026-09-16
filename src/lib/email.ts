@@ -69,9 +69,19 @@ function confirmationEmail(data: ConsultationInput): EmailContent {
     <p style="margin:0 0 16px;font-size:15px;line-height:1.6;">Hi ${firstName},</p>
     <p style="margin:0 0 16px;font-size:15px;line-height:1.6;">
       Thank you for reaching out to Studio Ruang. We've received your consultation enquiry and
-      will be in touch within 2 business days to arrange a first conversation.
+      are looking forward to learning more about your project.
     </p>
     <table role="presentation" width="100%" style="background-color:#EFE9DE;border:1px solid #D8D0C2;margin:0 0 16px;">
+      <tr>
+        <td style="padding:16px 20px;font-size:14px;line-height:1.9;">
+          <strong style="display:block;margin-bottom:6px;">What happens next</strong>
+          We'll be in touch within 2 business days to arrange a first conversation about your
+          project.
+        </td>
+      </tr>
+    </table>
+    <p style="margin:0 0 8px;font-size:15px;line-height:1.6;">Here's what you told us:</p>
+    <table role="presentation" width="100%" style="background-color:#FFFFFF;border:1px solid #D8D0C2;margin:0 0 16px;">
       <tr>
         <td style="padding:16px 20px;font-size:14px;line-height:1.9;">
           <strong>Project type:</strong> ${projectTypeLabels[data.projectType]}<br />
@@ -81,20 +91,28 @@ function confirmationEmail(data: ConsultationInput): EmailContent {
         </td>
       </tr>
     </table>
-    <p style="margin:0;font-size:15px;line-height:1.6;">— The Studio Ruang team</p>
+    <p style="margin:0;font-size:15px;line-height:1.6;">
+      Questions in the meantime? Just reply to this email.<br />
+      — The Studio Ruang team
+    </p>
   `);
 
   const text = `Thanks — we've received your enquiry
 
 Hi ${firstName},
 
-Thank you for reaching out to Studio Ruang. We've received your consultation enquiry and will be in touch within 2 business days to arrange a first conversation.
+Thank you for reaching out to Studio Ruang. We've received your consultation enquiry and are looking forward to learning more about your project.
 
+What happens next
+We'll be in touch within 2 business days to arrange a first conversation about your project.
+
+Here's what you told us:
 Project type: ${projectTypeLabels[data.projectType]}
 Budget: ${budgetRangeLabels[data.budgetRange]}
 Timeline: ${timelineLabels[data.timeline]}
 Your message: ${excerpt}
 
+Questions in the meantime? Just reply to this email.
 — The Studio Ruang team`;
 
   return { subject, html, text };
